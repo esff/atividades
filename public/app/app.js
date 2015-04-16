@@ -7,7 +7,7 @@ return $resource('/posts/:id', null,
     });
 }]);
 
-app.controller('testeCtlr', function($scope, $resource, Posts) {
+app.controller('testeCtlr', function($scope,$http, $resource, Posts) {
     $scope.atividades = $resource('/api/atividades').query();
     /*$http.get("/api/atividades")
         .success(function(response) {

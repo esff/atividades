@@ -4,6 +4,9 @@ var atividadesModel = require('./models/atividades');
 var Post = mongoose.model('atividades');
 var app = express();
 
+//app.set("jsonp callback", true);
+
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -15,7 +18,8 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 app.get('/api/atividades', function(req, res) {
     Post.find({}).exec(function(error,collection){
-        res.send(collection);
+        //res.jsonp({data: collection});
+        res.jsonp(collection);
     })
 });
 app.get('/posts/:id', function(req, res){
